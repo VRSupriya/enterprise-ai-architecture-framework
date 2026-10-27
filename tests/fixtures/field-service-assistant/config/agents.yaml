@@ -1,0 +1,32 @@
+# TEST FIXTURE — fictional configuration. Placeholder values only; no real secrets.
+# Represents what the prototype team has actually implemented (may differ from docs/architecture.md).
+
+runtime:
+  framework: langgraph
+  max_iterations: null        # no recursion limit configured
+  request_timeout_seconds: 120
+
+llm:
+  gateway_url: http://ai-gateway.internal/v1
+  model: gpt-class-large
+  deployment_region: eastus   # NOTE: placeholder; differs from the in-region policy target
+  api_key: "${AOAI_KEY_PLACEHOLDER}"   # stored in gateway config map, not a secret store
+
+agents:
+  work_order_agent:
+    tools: [erp_create_work_order, erp_update_work_order, erp_delete_work_order]
+    erp_credentials: svc-erp-admin    # shared service account with ERP admin role
+    retry:
+      attempts: unlimited
+      on: [timeout, 5xx]
+  history_agent:
+    tools: [sql_query]
+    db_role: erp_readonly_replica
+  escalation_agent:
+    tools: [teams_post_message]
+
+logging:
+  capture_prompts: true
+  capture_responses: true
+  sink: application-insights
+  retention_days: 730

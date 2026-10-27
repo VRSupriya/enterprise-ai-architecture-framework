@@ -1,0 +1,23 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local Claude Code settings (per-user approvals) — keep shared settings.json tracked
+.claude/settings.local.json
+
+# Secrets must never be committed to architecture deliverables
+.env
+.env.*
+*.pem
+*.key
+**/secrets/
+
+# Diagram render output (sources are the Markdown/Mermaid files)
+*.svg.tmp
+rendered/
+
+# Engagement working scratch (not deliverables)
+use-cases/*/scratch/

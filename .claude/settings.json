@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(tools/validate-framework.sh)",
+      "Bash(tools/validate-deliverables.sh *)",
+      "Bash(tools/validate-diagrams.sh *)",
+      "Bash(tools/new-use-case.sh *)",
+      "Bash(./tools/validate-framework.sh)",
+      "Bash(./tools/validate-deliverables.sh *)",
+      "Bash(./tools/validate-diagrams.sh *)",
+      "Bash(./tools/new-use-case.sh *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "WebSearch"
+    ],
+    "ask": [
+      "Edit(./standards/**)",
+      "Edit(./templates/**)",
+      "Edit(./.claude/**)",
+      "Bash(git push *)",
+      "Bash(git commit *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Read(./**/secrets/**)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)"
+    ]
+  }
+}
